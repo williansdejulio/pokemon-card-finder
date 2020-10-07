@@ -1,0 +1,34 @@
+@import './breakpoints.scss';
+
+html, body { height: 100%; background-color: #f7f7f7; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container {
+  margin: 0 auto;
+  position: relative;
+  min-height: calc(100vh - 84px - 60px);
+  padding-bottom: 60px;
+
+  @include min-breakpoint(lg) {
+    max-width: 960px;
+    width: 960px;
+  }
+
+  @include min-breakpoint(xl) {
+    max-width: 1152px;
+    width: 1152px;
+  }
+
+  @include min-breakpoint(xxl) {
+    max-width: 1344px;
+    width: 1344px;
+  }
+}
+
+.mat-chip {
+  cursor: pointer !important;
+}
+
+.full-width {
+  width: 100%;
+}

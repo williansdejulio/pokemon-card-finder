@@ -1,0 +1,96 @@
+@import '../../styles/breakpoints.scss';
+
+.breadcrumb {
+  margin-left: 20px;
+  
+  a {
+    color: #707070;
+  }
+}
+
+.card-container {
+  display: flex;
+  margin: 20px;
+  
+  @include max-breakpoint(md) {    
+    flex-direction: column;
+  }
+
+  > .card-image {
+    img {
+      width: 100%;
+    }
+    @include min-breakpoint(md) {
+      flex-basis: 33.33%; 
+    }
+  }
+  
+  > .card-details {
+    padding: 0 20px;
+    @include min-breakpoint(md) {
+      flex-basis: 66.66%;
+    }
+  }
+}
+
+.title-wrapper {
+  h1 {
+    display: inline;
+    padding-right: 1rem;
+  }
+  span {
+    color: #707070;
+  }
+}
+
+.types-wrapper {
+  margin: 1rem;
+}
+
+.modifiers-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .mat-card {
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  @include max-breakpoint(sm) {    
+    flex-direction: column;
+  }
+  @include min-breakpoint(md) {    
+    .mat-card + .mat-card {
+      margin-left: 20px;
+    }
+  }
+}
+
+.attack-item {
+  margin: 10px 0;
+
+  .attack-title {
+    display: flex;
+
+    h3 {
+      display: contents;
+    }
+  }
+  
+  .attack-description {
+    margin: 5px 0;
+  }
+}
+
+.chip-attack-list {
+  margin-left: 5px;
+  
+  .chip-damage {
+    background-color: red;
+    color: white;
+  }
+  .chip-mana {
+    background-color: blue;
+    color: white;
+  }
+}

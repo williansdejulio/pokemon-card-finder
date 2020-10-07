@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pokemon": {
+    "pokemon-card-finder": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pokemon",
+            "outputPath": "dist/pokemon-card-finder",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/app/styles/global.scss"
             ],
             "scripts": []
           },
@@ -66,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pokemon:build"
+            "browserTarget": "pokemon-card-finder:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pokemon:build:production"
+              "browserTarget": "pokemon-card-finder:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pokemon:build"
+            "browserTarget": "pokemon-card-finder:build"
           }
         },
         "test": {
@@ -92,7 +93,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/app/styles/global.scss"
             ],
             "scripts": []
           }
@@ -114,15 +116,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "pokemon:serve"
+            "devServerTarget": "pokemon-card-finder:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "pokemon:serve:production"
+              "devServerTarget": "pokemon-card-finder:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "pokemon"
+    }
+  },
+  "defaultProject": "pokemon-card-finder",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,0 +1,50 @@
+<div class="search-form">
+  <mat-form-field class="full-width">
+    <mat-label>Search by name...</mat-label>
+    <input type="text" matInput placeholder="Ex: Charmander" [(ngModel)]="filterOptions.name" (keyup)="loadData()">
+  </mat-form-field>
+  <div class="filter-holder">
+    <div class="filter-item">
+      <app-chips-autocomplete
+        itemName="types"
+        placeholder="Search by type..."
+        [itemsSelected]="filterOptions.types"
+        [allItems]="allTypes"
+        (addItem)="addSearchOption($event)"
+        (removeItem)="removeSearchOption($event)"
+      ></app-chips-autocomplete>
+    </div>
+    <div class="filter-item">
+      <app-chips-autocomplete
+        itemName="weaknesses"
+        placeholder="Search by weakness..."
+        [itemsSelected]="filterOptions.weaknesses"
+        [allItems]="allWeaknesses"
+        (addItem)="addSearchOption($event)"
+        (removeItem)="removeSearchOption($event)"
+      ></app-chips-autocomplete>
+    </div>
+    <div class="filter-item">
+      <app-chips-autocomplete
+        itemName="resistances"
+        placeholder="Search by resistances..."
+        [itemsSelected]="filterOptions.resistances"
+        [allItems]="allResistances"
+        (addItem)="addSearchOption($event)"
+        (removeItem)="removeSearchOption($event)"
+      ></app-chips-autocomplete>
+    </div>
+  </div>
+</div>
+
+<app-pokeball-spinner *ngIf="loading"></app-pokeball-spinner>
+
+<div class="card-list-holder" *ngIf="!loading">
+  <app-card-pokemon class="card" *ngFor="let card of cards"
+    [name]="card.name"
+    [id]="card.id"
+    [types]="card.types"
+    [srcImage]="card.imageUrl"
+    (searchTypeEvent)="addSearchOption($event)">
+  </app-card-pokemon>
+</div>

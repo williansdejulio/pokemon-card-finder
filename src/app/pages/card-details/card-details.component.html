@@ -1,0 +1,59 @@
+<app-pokeball-spinner *ngIf="loading"></app-pokeball-spinner>
+
+<div *ngIf="!loading">
+  <div class="breadcrumb"><a href="/pokemon/card-list">Cards</a> / <b>{{card.name}}</b></div>
+  <div class="card-container">
+    <div class="card-image">
+      <img src="{{card.imageUrlHiRes}}" />
+    </div>
+    <div class="card-details">
+      <div class="title-wrapper">
+        <h1>{{card.name}}</h1>
+        <span>ID: {{card.id}}</span>
+      </div>
+      <mat-chip-list class="types-wrapper">
+        <mat-chip *ngFor="let type of card.types" (click)="searchBy({types: type})">{{type}}</mat-chip>
+      </mat-chip-list>
+      <div class="modifiers-wrapper">
+        <mat-card>
+          <mat-card-title>Weakness</mat-card-title>
+          <mat-card-content>
+            <mat-chip-list *ngIf="card.weaknesses">
+              <mat-chip *ngFor="let weak of card.weaknesses" (click)="searchBy({weaknesses: weak.type})">{{weak.type}} {{weak.value}}</mat-chip>
+            </mat-chip-list>
+            <div *ngIf="!card.weaknesses">N/A</div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-title>Resistances</mat-card-title>
+          <mat-card-content>
+            <mat-chip-list *ngIf="card.resistances">
+              <mat-chip *ngFor="let res of card.resistances" (click)="searchBy({resistances: res.type})">{{res.type}} {{res.value}}</mat-chip>
+            </mat-chip-list>
+            <div *ngIf="!card.resistances">N/A</div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="attacks-wrapper">
+        <mat-card>
+          <mat-card-title>Attacks</mat-card-title>
+          <mat-card-content>
+            <div *ngIf="!card.attacks">N/A</div>
+            <div class="attack-item" *ngFor="let attack of card.attacks">
+              <div class="attack-title">
+                <h3>{{attack.name}}</h3>
+                <mat-chip-list class="chip-attack-list">
+                  <mat-chip class="chip-damage" *ngIf="attack.damage">Damage: {{attack.damage}}</mat-chip>
+                  <mat-chip class="chip-mana"*ngIf="attack.convertedEnergyCost">Cost: {{attack.convertedEnergyCost}}</mat-chip>
+                </mat-chip-list>
+              </div>
+              <p class="attack-description">
+                {{attack.text}}
+              </p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

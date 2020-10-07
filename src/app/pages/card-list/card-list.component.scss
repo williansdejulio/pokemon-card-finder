@@ -1,0 +1,36 @@
+@import '../../styles/breakpoints.scss';
+
+.card-list-holder {
+  display: grid;
+  align-items: stretch;
+  margin: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-gap: 30px;
+
+  @include max-breakpoint(lg) {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-gap: 15px;
+  }
+}
+
+.search-form {
+  margin: 0 30px;
+}
+
+.filter-holder {
+  display: flex;
+
+  .filter-item {
+    flex-grow: 1;
+  }
+  
+  @include max-breakpoint(md) {
+    flex-direction: column;
+  }
+
+  @include min-breakpoint(md) {
+    .filter-item + .filter-item {
+      margin-left: 10px;
+    }
+  }
+}
